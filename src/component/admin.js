@@ -44,9 +44,19 @@ const Admin = () => {
       category: "",
     },
     onSubmit: (values) => {
+      let email = currentuserdetails.email;
+      let hass = allUser.find((item, index) => item.email === email);
+      let index = allUser.findIndex((x) => x.email == email);
+      let customer = allUser[index];
+      let User = values;
+      let remain = parseInt(allUser[index].score) + parseInt(0.5);
+      setallUser((allUser[index].score = remain));
+      localStorage.setItem("wwtbam", JSON.stringify(allUser));
+      console.log(allUser);
       setadmin(admin.push(values));
+      console.log(admin);
       localStorage.setItem("admin", JSON.stringify(admin));
-      window.location.reload()
+      // window.location.reload()
     },
     onReset: (values) => {},
     validationSchema: yup.object({
@@ -283,7 +293,7 @@ const Admin = () => {
                             OPTION C
                           </th>
                         </tr>
-                        {admin.map((quest, ind) => (
+                        {/* {admin.map((quest, ind) => (
                           <tr key={ind}>
                             <td style={{ border: "1px solid white" }}>
                               {quest.category}
@@ -301,7 +311,7 @@ const Admin = () => {
                               {quest.option3}
                             </td>
                           </tr>
-                        ))}
+                        ))} */}
                       </table>
                     </div>
                   </div>

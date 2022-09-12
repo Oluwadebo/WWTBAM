@@ -24,6 +24,7 @@ const Signup = () => {
       email: "",
       password: "",
       gender: "",
+      questions:[],
       score: "0",
     },
     onSubmit: (values) => {
@@ -232,7 +233,7 @@ const Signup = () => {
                   Sign-Up
                 </button>
               </div>
-              <div className="row mt-3">
+              <div className="row my-3">
                 <div className="col-md-12">
                   <div className="row">
                     <div className="col-8 text-light">

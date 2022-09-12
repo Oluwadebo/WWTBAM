@@ -26,7 +26,7 @@ const Takequiz = () => {
     }
     if (localStorage.admin) {
       let detail = JSON.parse(localStorage.admin);
-      setadmin(detail);
+      setadmin(JSON.parse(localStorage.admin));
     } else {
       setadmin([]);
     }
@@ -62,25 +62,27 @@ const Takequiz = () => {
           <div className="col-12">
             {admin.map((quest, ind) => (
               <div key={ind}>
-                <h5>{quest.question}</h5>
-                <form action="">
-                  <input type="checkbox" name="" placeholder="{quest.option1}" id="" />
-                  {quest.option1}
-                  <input type="checkbox" name="" id="" />
-                  {quest.option2}
-                </form>
+                <h3>
+                  {ind + 1}. {quest.question}?
+                </h3>
+                <div action="">
+                  <button className="btn text-light" style={{ border: "none",cursor: "default" }}>
+                    <input type="radio" name="option" className="mx-2" />
+                    {quest.option1}
+                  </button>
+                  <button
+                    className="btn text-light"
+                    style={{ border: "none", cursor: "default" }}
+                  >
+                    <input type="radio" name="option" className="mx-2" />
+                    {quest.option2}
+                  </button>
+                  <button className="btn text-light" style={{ border: "none",cursor: "default" }}>
+                    <input type="radio" name="option" className="mx-2" />
+                    {quest.option3}
+                  </button>
+                </div>
               </div>
-              // <tr key={ind}>
-              //   <td style={{ border: "1px solid white" }}>
-              //     {quest.category}
-              //   </td>
-              //   <td style={{ border: "1px solid white" }}>
-              //     {quest.question}
-              //   </td>
-              //   <td style={{ border: "1px solid white" }}>{quest.option1}</td>
-              //   <td style={{ border: "1px solid white" }}>{quest.option2}</td>
-              //   <td style={{ border: "1px solid white" }}>{quest.option3}</td>
-              // </tr>
             ))}
           </div>
         </div>
