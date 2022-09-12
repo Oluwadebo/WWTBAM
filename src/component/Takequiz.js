@@ -26,6 +26,30 @@ const Takequiz = () => {
   }, []);
   return (
     <>
+      <nav className="navbar navbar-expand-lg shadow asda">
+        <div className="container">
+          <button
+            className="navbar-toggler sd"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarText">
+            <span className="navbar-text">
+              <Link to="/Dashboard">
+                <button className="btn btn-success form-control asd">
+                  <b>Home</b>
+                </button>
+              </Link>
+            </span>
+          </div>
+        </div>
+      </nav>
       <div className="container text-light">
         <div className="row my-2">
           <div className="col-12">
