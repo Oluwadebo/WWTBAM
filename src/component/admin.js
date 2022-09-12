@@ -12,7 +12,6 @@ const Admin = () => {
   const [customer, setcustomer] = useState({});
   const [Error, setError] = useState("");
   const [admin, setadmin] = useState([]);
-  const [tre, settre] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.wwtbam && localStorage.signinEmail && localStorage.users) {
@@ -47,6 +46,7 @@ const Admin = () => {
     onSubmit: (values) => {
       setadmin(admin.push(values));
       localStorage.setItem("admin", JSON.stringify(admin));
+      window.location.reload()
     },
     onReset: (values) => {},
     validationSchema: yup.object({
@@ -258,26 +258,48 @@ const Admin = () => {
                 <div className="container">
                   <div className="row mt-4">
                     <div className="col-12 table-responsive asd">
+                      <center>
+                        <h2>QUESTIONS AVAILABLE</h2>
+                      </center>
                       <table
-                        className="table table-bordered text-light my-3"
+                        className="table table-bordered text-light text-center my-3"
                         align="center"
                         border="1"
-                        id="allTodo"
                       >
                         <tr>
-                          <th>CATEGORY</th>
-                          <th>Questions</th>
-                          <th>OPTION A</th>
-                          <th>OPTION B</th>
-                          <th>OPTION C</th>
+                          <th style={{ border: "1px solid white" }}>
+                            CATEGORY
+                          </th>
+                          <th style={{ border: "1px solid white" }}>
+                            Questions
+                          </th>
+                          <th style={{ border: "1px solid white" }}>
+                            OPTION A
+                          </th>
+                          <th style={{ border: "1px solid white" }}>
+                            OPTION B
+                          </th>
+                          <th style={{ border: "1px solid white" }}>
+                            OPTION C
+                          </th>
                         </tr>
                         {admin.map((quest, ind) => (
                           <tr key={ind}>
-                            <td>{quest.category}</td>
-                            <td>{quest.question}</td>
-                            <td>{quest.option1}</td>
-                            <td>{quest.option2}</td>
-                            <td>{quest.option3}</td>
+                            <td style={{ border: "1px solid white" }}>
+                              {quest.category}
+                            </td>
+                            <td style={{ border: "1px solid white" }}>
+                              {quest.question}
+                            </td>
+                            <td style={{ border: "1px solid white" }}>
+                              {quest.option1}
+                            </td>
+                            <td style={{ border: "1px solid white" }}>
+                              {quest.option2}
+                            </td>
+                            <td style={{ border: "1px solid white" }}>
+                              {quest.option3}
+                            </td>
                           </tr>
                         ))}
                       </table>

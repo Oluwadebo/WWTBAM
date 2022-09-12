@@ -8,6 +8,7 @@ const Takequiz = () => {
   const [currentuser, setcurrentuser] = useState("");
   const [currentuserdetails, setcurrentuserdetails] = useState({});
   const [customer, setcustomer] = useState({});
+  const [admin, setadmin] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.wwtbam && localStorage.signinEmail && localStorage.users) {
@@ -22,6 +23,12 @@ const Takequiz = () => {
       setcustomer(AllUser[index]);
     } else {
       navigate("/Signin");
+    }
+    if (localStorage.admin) {
+      let detail = JSON.parse(localStorage.admin);
+      setadmin(detail);
+    } else {
+      setadmin([]);
     }
   }, []);
   return (
@@ -53,12 +60,28 @@ const Takequiz = () => {
       <div className="container text-light">
         <div className="row my-2">
           <div className="col-12">
-            <h2>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus,
-              esse asperiores adipisci maxime unde aliquam voluptatum quae alias
-              quia dolor aut molestias dicta fugiat ratione dolorem nulla ea
-              debitis eum.
-            </h2>
+            {admin.map((quest, ind) => (
+              <div key={ind}>
+                <h5>{quest.question}</h5>
+                <form action="">
+                  <input type="checkbox" name="" placeholder="{quest.option1}" id="" />
+                  {quest.option1}
+                  <input type="checkbox" name="" id="" />
+                  {quest.option2}
+                </form>
+              </div>
+              // <tr key={ind}>
+              //   <td style={{ border: "1px solid white" }}>
+              //     {quest.category}
+              //   </td>
+              //   <td style={{ border: "1px solid white" }}>
+              //     {quest.question}
+              //   </td>
+              //   <td style={{ border: "1px solid white" }}>{quest.option1}</td>
+              //   <td style={{ border: "1px solid white" }}>{quest.option2}</td>
+              //   <td style={{ border: "1px solid white" }}>{quest.option3}</td>
+              // </tr>
+            ))}
           </div>
         </div>
       </div>
