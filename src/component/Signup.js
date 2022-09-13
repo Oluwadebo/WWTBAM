@@ -31,7 +31,7 @@ const Signup = () => {
       let debo = JSON.parse(localStorage.getItem("wwtbam"));
       setallUser(debo);
       if (values) {
-        if (allUser == "") {
+        if (allUser <= 0) {
           setallUser(allUser.push(values));
           localStorage.setItem("wwtbam", JSON.stringify(allUser));
           navigate("/Signin");
@@ -42,20 +42,9 @@ const Signup = () => {
               setallUser(allUser.push(values));
               localStorage.setItem("wwtbam", JSON.stringify(allUser));
               navigate("/Signin");
-            } else {
-              if (
-                a["email"] === User.email &&
-                a["password"] === User.password
-              ) {
-                let err = "email and password already-in-use";
-                setError(err);
-              } else if (a["email"] === User.email) {
-                let err = "email-already-in-use";
-                setError(err);
-              } else if (a["password"] === User.password) {
-                let err = "password-already-in-use";
-                setError(err);
-              }
+            } else if (a["email"] === User.email) {
+              let err = "email-already-in-use";
+              setError(err);
             }
           }
         }
