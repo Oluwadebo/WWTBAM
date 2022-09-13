@@ -1,4 +1,6 @@
 import React from "react";
+import * as yup from "yup";
+import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -60,12 +62,18 @@ const Takequiz = () => {
       <div className="container text-light">
         <div className="row my-2">
           <div className="col-12">
-            {admin.map((quest, ind) => (
+            <center>
+              <h2>Quiz Questions</h2>
+            </center>
+            <div className="row">
+              <div className="col-12"></div>
+            </div>
+            {/* {admin.map((quest, ind) => (
               <div key={ind}>
                 <h3>
                   {ind + 1}. {quest.question}?
                 </h3>
-                <div action="">
+                <form action="">
                   <button className="btn text-light" style={{ border: "none",cursor: "default" }}>
                     <input type="radio" name="option" className="mx-2" />
                     {quest.option1}
@@ -81,9 +89,9 @@ const Takequiz = () => {
                     <input type="radio" name="option" className="mx-2" />
                     {quest.option3}
                   </button>
-                </div>
+                </form>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

@@ -34,6 +34,7 @@ const Admin = () => {
       setadmin([]);
     }
   }, []);
+
   const formik = useFormik({
     initialValues: {
       question: "",
@@ -45,18 +46,18 @@ const Admin = () => {
     },
     onSubmit: (values) => {
       let email = currentuserdetails.email;
-      let hass = allUser.find((item, index) => item.email === email);
-      let index = allUser.findIndex((x) => x.email == email);
-      let customer = allUser[index];
+      let user = allUser;
+      let hass = user.find((item, index) => item.email === email);
+      let index = user.findIndex((x) => x.email == email);
+      let customer = user[index];
       let User = values;
-      let remain = parseInt(allUser[index].score) + parseInt(0.5);
-      setallUser((allUser[index].score = remain));
-      localStorage.setItem("wwtbam", JSON.stringify(allUser));
+      let remain = parseInt(user[index].score) + parseInt(1);
+      setallUser((user[index].score = remain));
       console.log(allUser);
-      setadmin(admin.push(values));
-      console.log(admin);
-      localStorage.setItem("admin", JSON.stringify(admin));
-      // window.location.reload()
+      localStorage.setItem("wwtbam", JSON.stringify(allUser));
+      const newobj = [...admin, values];
+      setadmin(newobj);
+      localStorage.setItem("admin", JSON.stringify(newobj));
     },
     onReset: (values) => {},
     validationSchema: yup.object({
@@ -113,35 +114,36 @@ const Admin = () => {
                 <div className="modal" id="Money" data-bs-backdrop="static">
                   <div className="modal-dialog">
                     <div className="modal-content">
-                      <div className="modal-header text-dark">
-                        <select
-                          className={
-                            formik.errors.category && formik.touched.category
-                              ? "form-control is-invalid"
-                              : "form-control"
-                          }
-                          onChange={formik.handleChange}
-                          name="category"
-                          onBlur={formik.handleBlur}
-                          style={{ backgroundColor: "#F5F7FA" }}
-                        >
-                          <option>CATEGORY</option>
-                          <option value="ENGLISH">ENGLISH</option>
-                          <option value="BIOLOGY">BIOLOGY</option>
-                          <option value="OTHERS">OTHERS</option>
-                        </select>
-                        {formik.touched.category && (
-                          <div style={{ color: "red" }} className="my-2">
-                            {formik.errors.category}
-                          </div>
-                        )}
-                      </div>
-                      <div className="modal-body">
-                        <form
-                          action=""
-                          onSubmit={formik.handleSubmit}
-                          className="mx-2"
-                        >
+                      <form
+                        onSubmit={formik.handleSubmit}
+                        action=""
+                        className="mx-2"
+                      >
+                        <div className="modal-header text-dark">
+                          <select
+                            value={formik.values.category}
+                            className={
+                              formik.errors.category && formik.touched.category
+                                ? "form-control is-invalid"
+                                : "form-control"
+                            }
+                            onChange={formik.handleChange}
+                            name="category"
+                            onBlur={formik.handleBlur}
+                            style={{ backgroundColor: "#F5F7FA" }}
+                          >
+                            <option>CATEGORY</option>
+                            <option value="ENGLISH">ENGLISH</option>
+                            <option value="BIOLOGY">BIOLOGY</option>
+                            <option value="OTHERS">OTHERS</option>
+                          </select>
+                          {formik.touched.category && (
+                            <div style={{ color: "red" }} className="my-2">
+                              {formik.errors.category}
+                            </div>
+                          )}
+                        </div>
+                        <div className="modal-body">
                           <label className="col-form-label text-dark">
                             Questions
                           </label>
@@ -242,8 +244,8 @@ const Admin = () => {
                           >
                             SAVE
                           </button>
-                        </form>
-                      </div>
+                        </div>
+                      </form>
                       <div className="modal-footer">
                         <button
                           type="button"
@@ -293,7 +295,7 @@ const Admin = () => {
                             OPTION C
                           </th>
                         </tr>
-                        {/* {admin.map((quest, ind) => (
+                        {admin.map((quest, ind) => (
                           <tr key={ind}>
                             <td style={{ border: "1px solid white" }}>
                               {quest.category}
@@ -311,7 +313,7 @@ const Admin = () => {
                               {quest.option3}
                             </td>
                           </tr>
-                        ))} */}
+                        ))}
                       </table>
                     </div>
                   </div>

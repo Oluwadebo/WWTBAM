@@ -24,7 +24,7 @@ const Signup = () => {
       email: "",
       password: "",
       gender: "",
-      questions:[],
+      questions: [],
       score: "0",
     },
     onSubmit: (values) => {
@@ -99,7 +99,7 @@ const Signup = () => {
   return (
     <>
       <div className="container">
-        <div className="row mx-auto mt-5">
+        <div className="row mx-auto mt-4">
           <div className="shadow col-12 col-md-8 mx-auto px-4 pb-3 asd">
             <h2 className="m-4 text-light">
               <b>
@@ -233,7 +233,7 @@ const Signup = () => {
                   Sign-Up
                 </button>
               </div>
-              <div className="row my-3">
+              <div className="row mt-3">
                 <div className="col-md-12">
                   <div className="row">
                     <div className="col-8 text-light">

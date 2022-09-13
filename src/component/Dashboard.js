@@ -75,7 +75,7 @@ const Dashboard = () => {
                 <div className="col-12 col-md-4">
                   <Link to="/Admin">
                     <button className="btn btn-success form-control py-3 mt-3 asd">
-                      ADMIN
+                      Set-Questions
                     </button>
                   </Link>
                 </div>
