@@ -33,42 +33,79 @@ const Takequiz = () => {
       setadmin([]);
     }
   }, []);
+  const logout = () => {
+    localStorage.removeItem("signinEmail");
+    navigate("/Signin");
+  };
+  const toggleMenu = () => {
+    let navigation = document.querySelector(".navigation");
+    let toggle = document.querySelector(".toggle");
+    navigation.classList.toggle("active");
+    toggle.classList.toggle("active");
+  };
   return (
     <>
-      <nav className="navbar navbar-expand-lg shadow asda">
-        <div className="container">
-          <button
-            className="navbar-toggler sd"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarText">
-            <span className="navbar-text">
+      <div>
+        <div class="navigation">
+          <ul>
+            <li>
               <Link to="/Dashboard">
-                <button className="btn btn-success form-control asd">
-                  <b>Home</b>
+                <button
+                  className="btn form-control text-light"
+                  style={{ border: "none" }}
+                >
+                  <a>
+                    <span class="icon">
+                      <i class="fa fa-home" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Home</span>
+                  </a>
                 </button>
               </Link>
-            </span>
-          </div>
+            </li>
+            <li>
+              <Link to="/Admin">
+                <button
+                  className="btn form-control text-light"
+                  style={{ border: "none" }}
+                >
+                  <a>
+                    <span class="icon">
+                      <i class="fa fa-comment" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Set-Questions</span>
+                  </a>
+                </button>
+              </Link>
+            </li>
+            <li>
+              <button
+                className="btn form-control text-light"
+                onClick={logout}
+                style={{ border: "none" }}
+              >
+                <a>
+                  <span class="icon">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  </span>
+                  <span class="title">Log-Out</span>
+                </a>
+              </button>
+            </li>
+          </ul>
         </div>
-      </nav>
-      <div className="container text-light">
-        <div className="row my-2">
-          <div className="col-12">
-            <center>
-              <h2>Quiz Questions</h2>
-            </center>
-            <div className="row">
-              <div className="col-12"></div>
-            </div>
-            {/* {admin.map((quest, ind) => (
+        <div class="toggle" onClick={toggleMenu}></div>
+        <div className="container text-light pt-5">
+          <div className="container text-light">
+            <div className="row my-2">
+              <div className="col-12">
+                <center>
+                  <h2>Quiz Questions</h2>
+                </center>
+                <div className="row">
+                  <div className="col-12"></div>
+                </div>
+                {/* {admin.map((quest, ind) => (
               <div key={ind}>
                 <h3>
                   {ind + 1}. {quest.question}?
@@ -92,6 +129,8 @@ const Takequiz = () => {
                 </form>
               </div>
             ))} */}
+              </div>
+            </div>
           </div>
         </div>
       </div>

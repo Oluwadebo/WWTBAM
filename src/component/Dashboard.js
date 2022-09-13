@@ -29,67 +29,91 @@ const Dashboard = () => {
     localStorage.removeItem("signinEmail");
     navigate("/Signin");
   };
+  const toggleMenu = () => {
+    let navigation = document.querySelector(".navigation");
+    let toggle = document.querySelector(".toggle");
+    navigation.classList.toggle("active");
+    toggle.classList.toggle("active");
+  };
   return (
     <>
-      <nav className="navbar navbar-expand-lg shadow asda">
-        <div className="container">
-          <button
-            className="navbar-toggler sd"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarText">
-            <span className="navbar-text">
+      <div>
+        <div class="navigation">
+          <ul>
+            <li>
+              <Link to="/Dashboard">
+                <button
+                  className="btn form-control text-light"
+                  style={{ border: "none" }}
+                >
+                  <a>
+                    <span class="icon">
+                      <i class="fa fa-home" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Home</span>
+                  </a>
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/Takequiz">
+                <button
+                  className="btn form-control text-light"
+                  style={{ border: "none" }}
+                >
+                  <a>
+                    <span class="icon">
+                      <i class="fa fa-comment" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">TAKE QUIZ</span>
+                  </a>
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/Admin">
+                <button
+                  className="btn form-control text-light"
+                  style={{ border: "none" }}
+                >
+                  <a>
+                    <span class="icon">
+                      <i class="fa fa-comment" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Set-Questions</span>
+                  </a>
+                </button>
+              </Link>
+            </li>
+            <li>
               <button
-                className="btn btn-success form-control asd"
+                className="btn form-control text-light"
                 onClick={logout}
+                style={{ border: "none" }}
               >
-                Log-Out
+                <a>
+                  <span class="icon">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  </span>
+                  <span class="title">Log-Out</span>
+                </a>
               </button>
-            </span>
-          </div>
+            </li>
+          </ul>
         </div>
-      </nav>
-      <div className="container text-light">
-        <center>
-          <div className="row mx-auto">
-            <div className="col-12 mt-4 mb-3 dsa">
-              <h2 className="py-1">${customer.score}</h2>
-            </div>
-            <div className="col-12">
-              <img src={download} alt="" className="img-fluid" />
-              <div className="row">
-                <div className="col-12 col-md-4">
-                  <Link to="/Takequiz">
-                    <button className="btn btn-success form-control py-3 mt-3 asd">
-                      TAKE QUIZ
-                    </button>
-                  </Link>
-                </div>
-                <div className="col-12 col-md-4">
-                  <Link to="/Admin">
-                    <button className="btn btn-success form-control py-3 mt-3 asd">
-                      Set-Questions
-                    </button>
-                  </Link>
-                </div>
-                <div className="col-12 col-md-4">
-                  <Link to="/Takequiz">
-                    <button className="btn btn-success form-control py-3 mt-3 asd">
-                      RESULT
-                    </button>
-                  </Link>
-                </div>
+        <div class="toggle" onClick={toggleMenu}></div>
+        <div className="container text-light pt-5">
+          <center>
+            <div className="row mx-auto">
+              <div className="col-12 mt-4 mb-3">
+                <h2 className="py-1">${customer.score}</h2>
+              </div>
+              <div className="col-12">
+                <img src={download} alt="" className="img-fluid" />
               </div>
             </div>
-          </div>
-        </center>
+          </center>
+        </div>
       </div>
     </>
   );

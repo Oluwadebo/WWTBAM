@@ -57,7 +57,7 @@ code {
 }
 .navigation {
   position: fixed;
-  width: 60px;
+  width: 74px;
   height: 100%;
   background: #071348;
   transition: 0.5s;
@@ -80,6 +80,7 @@ code {
 }
 .navigation ul li:hover {
   background: #020019;
+  border-radius: 10px 0 0 10px;
 }
 .navigation ul li a {
   position: relative;
