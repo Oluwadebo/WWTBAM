@@ -66,7 +66,8 @@ code {
 body {
   min-height: 100vh;
   background: #020019;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow-x: hidden;
   transition: 0.5s;
 }
 .navigation {

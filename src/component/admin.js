@@ -51,7 +51,7 @@ const Admin = () => {
       let index = user.findIndex((x) => x.email == email);
       let customer = user[index];
       let User = values;
-      let remain = parseInt(user[index].score) + Number(0.2);
+      let remain = parseInt(user[index].score) + Number(1);
       setallUser((user[index].score = remain));
       console.log(allUser);
       localStorage.setItem("wwtbam", JSON.stringify(allUser));
@@ -301,8 +301,8 @@ const Admin = () => {
                           <div className="container">
                             <h3>{index + 1}. {item.question} ?</h3>
                             <p>
-                              <span>(a) {item.option1} </span>
-                              <span>(b) {item.option2} </span>
+                              <span>(a) {item.option1} </span><br />
+                              <span>(b) {item.option2} </span><br />
                               <span>(c) {item.option3} </span>
                             </p>
                           </div>

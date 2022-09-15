@@ -83,8 +83,14 @@ const Dashboard = () => {
       <div className="container text-light pt-5">
         <center>
           <div className="row mx-auto">
-            <div className="col-12 mt-4 mb-3">
-              <h2 className="py-1">${customer.score}</h2>
+            <div className="col-6 mx-auto mt-4 mb-3 asd">
+              <h2>
+                <span>FullName: </span>
+                {customer.firstname} {customer.Lastname}
+              </h2>
+              <h2 className="py-1">
+                <span>Account: </span>${customer.score}
+              </h2>
             </div>
             <div className="col-12">
               <img src={download} alt="" className="img-fluid" />

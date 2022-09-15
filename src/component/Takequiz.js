@@ -102,12 +102,16 @@ const Takequiz = () => {
                   onChange={(e) => setfirstname(e.target.value)}
                 />
                 <span className="w-25"> (a) {disquestion.option1} </span>
+              </div>
+              <div className="my-4 mx-5">
                 <input
                   type="radio"
                   name="option"
                   onChange={(e) => setfirstname(e.target.value)}
                 />
                 <span> (b) {disquestion.option2} </span>
+              </div>
+              <div className="my-4 mx-5">
                 <input
                   type="radio"
                   name="option"
@@ -119,7 +123,7 @@ const Takequiz = () => {
             <div className="col-12 mx-5">
               <div className="row">
                 <div className="col-1">
-                  <h3 className="circle">Back</h3>
+                  {/* <h3 className="circle">Back</h3> */}
                 </div>
                 <div className="col-11" style={{ float: "right" }}>
                   <h3 className="circle" onClick={nextQuestion}>
