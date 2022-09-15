@@ -35,6 +35,11 @@ const Takequiz = () => {
     console.log(ab);
   }, []);
   console.log(disquestion);
+  const nextQuestion = () => {
+    let a = Math.floor(Math.random() * 2);
+    setdisquestion(() => question[a]);
+    console.log(disquestion);
+  };
   const logout = () => {
     localStorage.removeItem("signinEmail");
     navigate("/Signin");
@@ -90,9 +95,9 @@ const Takequiz = () => {
                 <h2>Quiz Questions</h2>
               </center>
             </div>
-            <center>
-              <div className="col-12">
-                <h3 className="my-4">{disquestion.question} ?</h3>
+            <div className="col-12">
+              <h3 className="my-4 mx-5">{disquestion.question} ?</h3>
+              <div className="my-4 mx-5">
                 <input
                   type="radio"
                   name="option"
@@ -112,26 +117,16 @@ const Takequiz = () => {
                 />
                 <span> (c) {disquestion.option3} </span>
               </div>
-            </center>
-            <div className="col-12">
-              <div className="circle">Hover me</div>
+            </div>
+            <div className="col-12 mx-5">
               <div className="row">
-                {/* <div className="col-6 text-light"></div> */}
-                <div className="col-12 col-md-6" style={{ float: "right" }}>
-                  <button
-                    type="submit"
-                    className="btn btn-success form-control py-3 mt-3 asd"
-                  >
-                    <h3>Previous</h3>
-                  </button>
+                <div className="col-1">
+                  <h3 className="circle">Back</h3>
                 </div>
-                <div className="col-12 col-md-6" style={{ float: "right" }}>
-                  <button
-                    type="submit"
-                    className="btn btn-success form-control py-3 mt-3 asd"
-                  >
-                    <h3>Next</h3>
-                  </button>
+                <div className="col-11" style={{ float: "right" }}>
+                  <h3 className="circle" onClick={nextQuestion}>
+                    Next
+                  </h3>
                 </div>
               </div>
             </div>

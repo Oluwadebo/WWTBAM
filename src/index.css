@@ -44,14 +44,15 @@ code {
   width: 100px;
   padding: 50px 0;
   line-height: 0;
-  margin: 60px auto;
+  margin: 40px auto;
   background: #071348;
-  border-radius: 58px;
+  border-radius: 60px;
   cursor: pointer;
-  transition: background 2s, transform 1.5s /*ease-in*/ linear;
+  text-align: center;
+  transition: background 2s, transform 1.5s linear;
 }
 .circle:hover {
-  background: salmon;
+  background: #1b3fe0;
   transform: rotate(360deg);
 }
 @import url("https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap");
@@ -80,16 +81,22 @@ body {
 .navigation.active {
   width: 250px;
 }
+.navigation.active,
+.toggle.active {
+  margin-left: -40px;
+}
 .container.active {
   width: calc(100% - 300px);
   margin-left: 300px;
 }
 .navigation.active,
 .navigation:hover ~ .container {
-  margin-right: -10px;
+  transform: translateX(40px);
+  transition: 0.5s ease-in-out;
 }
 .navigation:hover ~ .container {
-  margin-left: 300px;
+  transform: translateX(300px);
+  transition: 0.5s ease-in-out;
 }
 .navigation ul {
   position: absolute;
@@ -151,9 +158,9 @@ body {
   background: #071348;
   cursor: pointer;
 }
-.toggle.active {
+/* .toggle.active {
   background: #1b3fe0;
-}
+} */
 .toggle::before {
   content: "\f0c9";
   font-family: fontAwesome;
