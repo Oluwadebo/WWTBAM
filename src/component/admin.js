@@ -299,7 +299,7 @@ const Admin = () => {
                         </center>
                         {admin.map((item, index) => (
                           <div className="container">
-                            <h3>{item.question} ?</h3>
+                            <h3>{index + 1}. {item.question} ?</h3>
                             <p>
                               <span>(a) {item.option1} </span>
                               <span>(b) {item.option2} </span>

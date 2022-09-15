@@ -11,8 +11,8 @@ const Takequiz = () => {
   const [currentuserdetails, setcurrentuserdetails] = useState({});
   const [customer, setcustomer] = useState({});
   const [question, setquestion] = useState([]);
-  const [firstname, setfirstname] = useState("");
   const [disquestion, setdisquestion] = useState([]);
+  const [firstname, setfirstname] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.wwtbam && localStorage.signinEmail && localStorage.users) {
@@ -28,17 +28,15 @@ const Takequiz = () => {
     } else {
       navigate("/Signin");
     }
+
     let allQuestion = JSON.parse(localStorage.admin);
-    let ab = Math.floor(Math.random() * 2);
+    let ab = Math.floor(Math.random() * allQuestion.length);
     setquestion(allQuestion);
     setdisquestion(() => allQuestion[ab]);
-    console.log(ab);
   }, []);
-  console.log(disquestion);
   const nextQuestion = () => {
-    let a = Math.floor(Math.random() * 2);
+    let a = Math.floor(Math.random() * question.length);
     setdisquestion(() => question[a]);
-    console.log(disquestion);
   };
   const logout = () => {
     localStorage.removeItem("signinEmail");
