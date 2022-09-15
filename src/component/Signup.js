@@ -17,6 +17,9 @@ const Signup = () => {
       setallUser([]);
     }
   }, []);
+  let lower = new RegExp(`(?=.*[a-z])`);
+  let upper = new RegExp(`(?=.*[A-Z])`);
+  let number = new RegExp(`(?=.*[0-9])`);
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -67,7 +70,10 @@ const Signup = () => {
       password: yup
         .string()
         .required("This field is required")
-        .min(5, "password is weak, must be greater than six"),
+        .matches(lower, "Must include lowerCase letter")
+        .matches(upper, "Must include upperCase letter")
+        .matches(number, "Must include a number")
+        .min(5, "must be greater than 5 charaters"),
     }),
   });
   const toggle = useRef();
@@ -200,7 +206,7 @@ const Signup = () => {
                   style={{ backgroundColor: "#F5F7FA" }}
                   name="password"
                   onBlur={formik.handleBlur}
-                />
+                />y
                 <div
                   id="toggle"
                   ref={toggle}

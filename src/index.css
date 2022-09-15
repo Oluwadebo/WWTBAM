@@ -1,18 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", "poppins", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: 0.5s;
-}
-body {
-  min-height: 100vh;
-  background: #020019;
-}
 code {
   font-family: "Courier New", monospace;
 }
@@ -55,9 +40,37 @@ code {
     transform: translateY(-40px);
   }
 }
+.circle {
+  width: 100px;
+  padding: 50px 0;
+  line-height: 0;
+  margin: 60px auto;
+  background: #071348;
+  border-radius: 58px;
+  cursor: pointer;
+  transition: background 2s, transform 1.5s /*ease-in*/ linear;
+}
+.circle:hover {
+  background: salmon;
+  transform: rotate(360deg);
+}
+@import url("https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif, "poppins";
+  transition: 0.5s;
+}
+body {
+  min-height: 100vh;
+  background: #020019;
+  overflow: hidden;
+  transition: 0.5s;
+}
 .navigation {
   position: fixed;
-  width: 74px;
+  width: 60px;
   height: 100%;
   background: #071348;
   transition: 0.5s;
@@ -66,6 +79,17 @@ code {
 .navigation:hover,
 .navigation.active {
   width: 250px;
+}
+.container.active {
+  width: calc(100% - 300px);
+  margin-left: 300px;
+}
+.navigation.active,
+.navigation:hover ~ .container {
+  margin-right: -10px;
+}
+.navigation:hover ~ .container {
+  margin-left: 300px;
 }
 .navigation ul {
   position: absolute;
@@ -77,12 +101,20 @@ code {
   position: relative;
   width: 100%;
   list-style: none;
+  margin-left: -28px;
+}
+.navigation ul li button {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  margin-left: -13px;
 }
 .navigation ul li:hover {
   background: #020019;
+  width: 250px;
   border-radius: 10px 0 0 10px;
 }
-.navigation ul li a {
+.navigation ul li .a {
   position: relative;
   display: none;
   width: 100%;
@@ -90,18 +122,18 @@ code {
   text-decoration: none;
   color: #fff;
 }
-.navigation ul li a .icon {
+.navigation ul li .a .icon {
   position: relative;
   display: block;
-  min-width: 20px;
+  min-width: 60px;
   height: 60px;
   line-height: 60px;
   text-align: center;
 }
-.navigation ul li a .icon .fa {
+.navigation ul li .a .icon .fa {
   font-size: 24px;
 }
-.navigation ul li a .title {
+.navigation ul li .a .title {
   position: relative;
   display: block;
   padding: 0 10px;
@@ -120,7 +152,7 @@ code {
   cursor: pointer;
 }
 .toggle.active {
-  background: #541dea;
+  background: #1b3fe0;
 }
 .toggle::before {
   content: "\f0c9";
@@ -143,5 +175,8 @@ code {
   .navigation.active {
     left: 0px;
     width: 100%;
+  }
+  .navigation ul li:hover {
+    width: 370px;
   }
 }

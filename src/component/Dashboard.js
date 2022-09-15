@@ -31,89 +31,66 @@ const Dashboard = () => {
   };
   const toggleMenu = () => {
     let navigation = document.querySelector(".navigation");
+    let container = document.querySelector(".container");
     let toggle = document.querySelector(".toggle");
+    container.classList.toggle("active");
     navigation.classList.toggle("active");
     toggle.classList.toggle("active");
   };
   return (
     <>
-      <div>
-        <div class="navigation">
-          <ul>
-            <li>
-              <Link to="/Dashboard">
-                <button
-                  className="btn form-control text-light"
-                  style={{ border: "none" }}
-                >
-                  <a>
-                    <span class="icon">
-                      <i class="fa fa-home" aria-hidden="true"></i>
-                    </span>
-                    <span class="title">Home</span>
-                  </a>
-                </button>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Takequiz">
-                <button
-                  className="btn form-control text-light"
-                  style={{ border: "none" }}
-                >
-                  <a>
-                    <span class="icon">
-                      <i class="fa fa-comment" aria-hidden="true"></i>
-                    </span>
-                    <span class="title">TAKE QUIZ</span>
-                  </a>
-                </button>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Admin">
-                <button
-                  className="btn form-control text-light"
-                  style={{ border: "none" }}
-                >
-                  <a>
-                    <span class="icon">
-                      <i class="fa fa-comment" aria-hidden="true"></i>
-                    </span>
-                    <span class="title">Set-Questions</span>
-                  </a>
-                </button>
-              </Link>
-            </li>
-            <li>
-              <button
-                className="btn form-control text-light"
-                onClick={logout}
-                style={{ border: "none" }}
-              >
-                <a>
-                  <span class="icon">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                  </span>
-                  <span class="title">Log-Out</span>
-                </a>
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div class="toggle" onClick={toggleMenu}></div>
-        <div className="container text-light pt-5">
-          <center>
-            <div className="row mx-auto">
-              <div className="col-12 mt-4 mb-3">
-                <h2 className="py-1">${customer.score}</h2>
-              </div>
-              <div className="col-12">
-                <img src={download} alt="" className="img-fluid" />
-              </div>
+      <div className="navigation">
+        <ul>
+          <li>
+            <Link to="/Dashboard" className="a">
+              <span className="icon">
+                <i className="fa fa-home" aria-hidden="true"></i>
+              </span>
+              <span className="title">Home</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/Takequiz" className="a">
+              <span className="icon">
+                <i className="fa fa-comment" aria-hidden="true"></i>
+              </span>
+              <span className="title">TAKE QUIZ</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/Admin" className="a">
+              <span className="icon">
+                <i className="fa fa-comment" aria-hidden="true"></i>
+              </span>
+              <span className="title">Set-Questions</span>
+            </Link>
+          </li>
+          <li>
+            <button
+              className="btn form-control text-light a"
+              style={{ border: "none" }}
+              onClick={logout}
+            >
+              <span className="icon">
+                <i className="fa fa-sign-out" aria-hidden="true"></i>
+              </span>
+              <span className="title">Log-Out</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div className="toggle" onClick={toggleMenu}></div>
+      <div className="container text-light pt-5">
+        <center>
+          <div className="row mx-auto">
+            <div className="col-12 mt-4 mb-3">
+              <h2 className="py-1">${customer.score}</h2>
             </div>
-          </center>
-        </div>
+            <div className="col-12">
+              <img src={download} alt="" className="img-fluid" />
+            </div>
+          </div>
+        </center>
       </div>
     </>
   );

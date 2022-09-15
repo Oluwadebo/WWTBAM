@@ -17,6 +17,9 @@ const Signup = () => {
       setallUser([]);
     }
   }, []);
+  let lower = new RegExp(`(?=.*[a-z])`);
+  let upper = new RegExp(`(?=.*[A-Z])`);
+  let number = new RegExp(`(?=.*[0-9])`);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -47,7 +50,10 @@ const Signup = () => {
       password: yup
         .string()
         .required("This field is required")
-        .min(5, "password is weak, must be greater than five"),
+        .matches(lower, "Must include lowerCase letter")
+        .matches(upper, "Must include upperCase letter")
+        .matches(number, "Must include a number")
+        .min(5, "password is weak, must be greater than 5 charaters"),
     }),
   });
   const toggle = useRef();
@@ -124,6 +130,11 @@ const Signup = () => {
                 >
                   <i ref={i} className="fa fa-eye" aria-hidden="true"></i>
                 </div>
+                {formik.touched.password && (
+                  <div style={{ color: "red" }} className="my-2">
+                    {formik.errors.password}
+                  </div>
+                )}
                 <label>&#x1F512;&nbsp; Your password</label>
                 <button
                   type="submit"

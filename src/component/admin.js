@@ -51,7 +51,7 @@ const Admin = () => {
       let index = user.findIndex((x) => x.email == email);
       let customer = user[index];
       let User = values;
-      let remain = parseInt(user[index].score) + parseInt(1);
+      let remain = parseInt(user[index].score) + Number(0.2);
       setallUser((user[index].score = remain));
       console.log(allUser);
       localStorage.setItem("wwtbam", JSON.stringify(allUser));
@@ -75,62 +75,48 @@ const Admin = () => {
   };
   const toggleMenu = () => {
     let navigation = document.querySelector(".navigation");
+    let container = document.querySelector(".container");
     let toggle = document.querySelector(".toggle");
     navigation.classList.toggle("active");
+    container.classList.toggle("active");
     toggle.classList.toggle("active");
   };
   return (
     <>
       <div>
-        <div class="navigation">
+        <div className="navigation">
           <ul>
             <li>
-              <Link to="/Dashboard">
-                <button
-                  className="btn form-control text-light"
-                  style={{ border: "none" }}
-                >
-                  <a>
-                    <span class="icon">
-                      <i class="fa fa-home" aria-hidden="true"></i>
-                    </span>
-                    <span class="title">Home</span>
-                  </a>
-                </button>
+              <Link to="/Dashboard" className="a">
+                <span className="icon">
+                  <i className="fa fa-home" aria-hidden="true"></i>
+                </span>
+                <span className="title">Home</span>
               </Link>
             </li>
             <li>
-              <Link to="/Takequiz">
-                <button
-                  className="btn form-control text-light"
-                  style={{ border: "none" }}
-                >
-                  <a>
-                    <span class="icon">
-                      <i class="fa fa-comment" aria-hidden="true"></i>
-                    </span>
-                    <span class="title">TAKE QUIZ</span>
-                  </a>
-                </button>
+              <Link to="/Takequiz" className="a">
+                <span className="icon">
+                  <i className="fa fa-comment" aria-hidden="true"></i>
+                </span>
+                <span className="title">TAKE QUIZ</span>
               </Link>
             </li>
             <li>
               <button
-                className="btn form-control text-light"
-                onClick={logout}
+                className="btn form-control text-light a"
                 style={{ border: "none" }}
+                onClick={logout}
               >
-                <a>
-                  <span class="icon">
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>
-                  </span>
-                  <span class="title">Log-Out</span>
-                </a>
+                <span className="icon">
+                  <i className="fa fa-sign-out" aria-hidden="true"></i>
+                </span>
+                <span className="title">Log-Out</span>
               </button>
             </li>
           </ul>
         </div>
-        <div class="toggle" onClick={toggleMenu}></div>
+        <div className="toggle" onClick={toggleMenu}></div>
         <div className="container text-light pt-5">
           <div className="row my-2">
             <div className="col-12">
@@ -311,48 +297,16 @@ const Admin = () => {
                         <center>
                           <h2>QUESTIONS AVAILABLE</h2>
                         </center>
-                        <table
-                          className="table table-bordered text-light text-center my-3"
-                          align="center"
-                          border="1"
-                        >
-                          <tr>
-                            <th style={{ border: "1px solid white" }}>
-                              CATEGORY
-                            </th>
-                            <th style={{ border: "1px solid white" }}>
-                              Questions
-                            </th>
-                            <th style={{ border: "1px solid white" }}>
-                              OPTION A
-                            </th>
-                            <th style={{ border: "1px solid white" }}>
-                              OPTION B
-                            </th>
-                            <th style={{ border: "1px solid white" }}>
-                              OPTION C
-                            </th>
-                          </tr>
-                          {admin.map((quest, ind) => (
-                            <tr key={ind}>
-                              <td style={{ border: "1px solid white" }}>
-                                {quest.category}
-                              </td>
-                              <td style={{ border: "1px solid white" }}>
-                                {quest.question}
-                              </td>
-                              <td style={{ border: "1px solid white" }}>
-                                {quest.option1}
-                              </td>
-                              <td style={{ border: "1px solid white" }}>
-                                {quest.option2}
-                              </td>
-                              <td style={{ border: "1px solid white" }}>
-                                {quest.option3}
-                              </td>
-                            </tr>
-                          ))}
-                        </table>
+                        {admin.map((item, index) => (
+                          <div className="container">
+                            <h3>{item.question} ?</h3>
+                            <p>
+                              <span>(a) {item.option1} </span>
+                              <span>(b) {item.option2} </span>
+                              <span>(c) {item.option3} </span>
+                            </p>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
