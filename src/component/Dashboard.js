@@ -89,7 +89,7 @@ const Dashboard = () => {
                 {customer.firstname} {customer.Lastname}
               </h2>
               <h2 className="py-1">
-                <span>Account: </span>${customer.score}
+                <span>Account: </span>$ {customer.account}
               </h2>
             </div>
             <div className="col-12">

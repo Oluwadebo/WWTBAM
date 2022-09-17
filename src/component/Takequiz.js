@@ -37,6 +37,13 @@ const Takequiz = () => {
   const nextQuestion = () => {
     let a = Math.floor(Math.random() * question.length);
     setdisquestion(() => question[a]);
+    setfirstname("");
+    let answer = disquestion.answer;
+    if (firstname === answer) {
+      console.log(customer);
+      console.log(answer);
+      console.log(firstname);
+    }
   };
   const logout = () => {
     localStorage.removeItem("signinEmail");
@@ -99,6 +106,7 @@ const Takequiz = () => {
                 <input
                   type="radio"
                   name="option"
+                  value={disquestion.option1}
                   onChange={(e) => setfirstname(e.target.value)}
                 />
                 <span className="w-25"> (a) {disquestion.option1} </span>
@@ -107,6 +115,7 @@ const Takequiz = () => {
                 <input
                   type="radio"
                   name="option"
+                  value={disquestion.option2}
                   onChange={(e) => setfirstname(e.target.value)}
                 />
                 <span> (b) {disquestion.option2} </span>
@@ -115,6 +124,7 @@ const Takequiz = () => {
                 <input
                   type="radio"
                   name="option"
+                  value={disquestion.option3}
                   onChange={(e) => setfirstname(e.target.value)}
                 />
                 <span> (c) {disquestion.option3} </span>

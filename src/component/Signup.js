@@ -27,7 +27,7 @@ const Signup = () => {
       email: "",
       password: "",
       gender: "",
-      questions: [],
+      account: "0",
       score: "0",
     },
     onSubmit: (values) => {
@@ -41,7 +41,7 @@ const Signup = () => {
         } else {
           for (const a of allUser) {
             let User = values;
-            if (a["email"] !== User.email && a["password"] !== User.password) {
+            if (a["email"] !== User.email) {
               setallUser(allUser.push(values));
               localStorage.setItem("wwtbam", JSON.stringify(allUser));
               navigate("/Signin");
@@ -206,7 +206,8 @@ const Signup = () => {
                   style={{ backgroundColor: "#F5F7FA" }}
                   name="password"
                   onBlur={formik.handleBlur}
-                />y
+                />
+                y
                 <div
                   id="toggle"
                   ref={toggle}

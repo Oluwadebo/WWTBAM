@@ -51,8 +51,8 @@ const Admin = () => {
       let index = user.findIndex((x) => x.email == email);
       let customer = user[index];
       let User = values;
-      let remain = parseInt(user[index].score) + Number(1);
-      setallUser((user[index].score = remain));
+      let remain = parseInt(user[index].account) + Number(1);
+      setallUser((user[index].account = remain));
       console.log(allUser);
       localStorage.setItem("wwtbam", JSON.stringify(allUser));
       const newobj = [...admin, values];
@@ -299,10 +299,14 @@ const Admin = () => {
                         </center>
                         {admin.map((item, index) => (
                           <div className="container">
-                            <h3>{index + 1}. {item.question} ?</h3>
+                            <h3>
+                              {index + 1}. {item.question} ?
+                            </h3>
                             <p>
-                              <span>(a) {item.option1} </span><br />
-                              <span>(b) {item.option2} </span><br />
+                              <span>(a) {item.option1} </span>
+                              <br />
+                              <span>(b) {item.option2} </span>
+                              <br />
                               <span>(c) {item.option3} </span>
                             </p>
                           </div>
