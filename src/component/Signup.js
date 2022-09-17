@@ -37,14 +37,14 @@ const Signup = () => {
         if (allUser <= 0) {
           setallUser(allUser.push(values));
           localStorage.setItem("wwtbam", JSON.stringify(allUser));
-          navigate("/Signin");
+          navigate("/Dashboard");
         } else {
           for (const a of allUser) {
             let User = values;
             if (a["email"] !== User.email) {
               setallUser(allUser.push(values));
               localStorage.setItem("wwtbam", JSON.stringify(allUser));
-              navigate("/Signin");
+              navigate("/Dashboard");
             } else if (a["email"] === User.email) {
               let err = "email-already-in-use";
               setError(err);

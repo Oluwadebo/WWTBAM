@@ -47,13 +47,9 @@ const Admin = () => {
     onSubmit: (values) => {
       let email = currentuserdetails.email;
       let user = allUser;
-      let hass = user.find((item, index) => item.email === email);
       let index = user.findIndex((x) => x.email == email);
-      let customer = user[index];
-      let User = values;
       let remain = parseInt(user[index].account) + Number(1);
       setallUser((user[index].account = remain));
-      console.log(allUser);
       localStorage.setItem("wwtbam", JSON.stringify(allUser));
       const newobj = [...admin, values];
       setadmin(newobj);
