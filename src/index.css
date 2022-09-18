@@ -40,6 +40,10 @@ code {
     transform: translateY(-40px);
   }
 }
+.cort:hover {
+  transition: 0.5s ease-in;
+  background: linear-gradient(90deg, #071348 0%, #20488fb6 100%);
+}
 .circle {
   width: 100px;
   padding: 50px 0;
@@ -66,7 +70,6 @@ code {
 body {
   min-height: 100vh;
   background: #020019;
-  /* overflow: hidden; */
   overflow-x: hidden;
   transition: 0.5s;
 }

@@ -1,6 +1,4 @@
 import React from "react";
-import * as yup from "yup";
-import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -12,7 +10,8 @@ const Takequiz = () => {
   const [customer, setcustomer] = useState({});
   const [question, setquestion] = useState([]);
   const [disquestion, setdisquestion] = useState([]);
-  const [firstname, setfirstname] = useState("");
+  const [Answer, setAnswer] = useState("");
+  const [Correct, setCorrect] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.wwtbam && localStorage.signinEmail && localStorage.users) {
@@ -33,16 +32,23 @@ const Takequiz = () => {
     let ab = Math.floor(Math.random() * allQuestion.length);
     setquestion(allQuestion);
     setdisquestion(() => allQuestion[ab]);
+
+    let correctAnswer = allQuestion[ab].answer;
+    setAnswer(correctAnswer);
   }, []);
   const nextQuestion = () => {
     let a = Math.floor(Math.random() * question.length);
     setdisquestion(() => question[a]);
-    setfirstname("");
-    let answer = disquestion.answer;
-    if (firstname === answer) {
-      console.log(customer);
-      console.log(answer);
-      console.log(firstname);
+  };
+
+  const option = (e) => {
+    console.log(e);
+    if (e === Answer) {
+      console.log("correct");
+      setCorrect("true");
+    } else {
+      console.log("worng");
+      setCorrect("false");
     }
   };
   const logout = () => {
@@ -102,39 +108,35 @@ const Takequiz = () => {
             </div>
             <div className="col-12">
               <h3 className="my-4 mx-5">{disquestion.question} ?</h3>
-              <div className="my-4 mx-5">
-                <input
-                  type="radio"
-                  name="option"
-                  value={disquestion.option1}
-                  onChange={(e) => setfirstname(e.target.value)}
-                />
-                <span className="w-25"> (a) {disquestion.option1} </span>
-              </div>
-              <div className="my-4 mx-5">
-                <input
-                  type="radio"
-                  name="option"
-                  value={disquestion.option2}
-                  onChange={(e) => setfirstname(e.target.value)}
-                />
-                <span> (b) {disquestion.option2} </span>
-              </div>
-              <div className="my-4 mx-5">
-                <input
-                  type="radio"
-                  name="option"
-                  value={disquestion.option3}
-                  onChange={(e) => setfirstname(e.target.value)}
-                />
-                <span> (c) {disquestion.option3} </span>
+              <div className="row">
+                <div
+                  className="col-12 col-md-6 mx-5"
+                  onClick={(e) => option(e.target.innerHTML)}
+                >
+                  <h5 className="border rounded rounded-5 p-4 cort">
+                    {disquestion.option1}
+                  </h5>
+                </div>
+                <div
+                  className="col-12 col-md-6 mx-5"
+                  onClick={(e) => option(e.target.innerHTML)}
+                >
+                  <h5 className="border rounded rounded-5 p-4 cort">
+                    {disquestion.option2}
+                  </h5>
+                </div>
+                <div
+                  className="col-12 col-md-6 mx-5"
+                  onClick={(e) => option(e.target.innerHTML)}
+                >
+                  <h5 className="border rounded rounded-5 p-4 cort">
+                    {disquestion.option3}
+                  </h5>
+                </div>
               </div>
             </div>
             <div className="col-12 mx-5">
               <div className="row">
-                <div className="col-1">
-                  {/* <h3 className="circle">Back</h3> */}
-                </div>
                 <div className="col-11" style={{ float: "right" }}>
                   <h3 className="circle" onClick={nextQuestion}>
                     Next
