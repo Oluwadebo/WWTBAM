@@ -209,3 +209,21 @@ body {
 .link :hover {
   font-weight: 600;
 }
+.fis {
+  position: fixed;
+  background: #071348;
+  width: 200px;
+}
+.fis ul li:hover {
+  background: #020019;
+  width: 200px;
+  padding-left: 20px;
+  border-radius: 10px 0 0 10px;
+}
+@media (max-width: 600px) {
+  .fis {
+    width: 50px;
+    position: relative;
+    background: #071348;
+  }
+}

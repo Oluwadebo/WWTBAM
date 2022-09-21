@@ -69,246 +69,310 @@ const Admin = () => {
     localStorage.removeItem("signinEmail");
     navigate("/Signin");
   };
-  const toggleMenu = () => {
-    let navigation = document.querySelector(".navigation");
-    let container = document.querySelector(".container");
-    let toggle = document.querySelector(".toggle");
-    navigation.classList.toggle("active");
-    container.classList.toggle("active");
-    toggle.classList.toggle("active");
-  };
   return (
     <>
-      <div>
-        <div className="navigation">
-          <ul>
-            <li>
-              <Link to="/Dashboard" className="a">
-                <span className="icon">
-                  <i className="fa fa-home" aria-hidden="true"></i>
-                </span>
-                <span className="title">Home</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/Takequiz" className="a">
-                <span className="icon">
-                  <i className="fa fa-comment" aria-hidden="true"></i>
-                </span>
-                <span className="title">TAKE QUIZ</span>
-              </Link>
-            </li>
-            <li>
-              <button
-                className="btn form-control text-light a"
-                style={{ border: "none" }}
-                onClick={logout}
-              >
-                <span className="icon">
-                  <i className="fa fa-sign-out" aria-hidden="true"></i>
-                </span>
-                <span className="title">Log-Out</span>
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div className="toggle" onClick={toggleMenu}></div>
-        <div className="container text-light pt-5">
-          <div className="row my-2">
-            <div className="col-12">
-              <center>
-                <h2>Set Questions</h2>
-              </center>
-              <div className="row">
-                <div className="col-12 col-md-4">
-                  <button
-                    type="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#Money"
-                    className="btn btn-info form-control text-light py-3 mt-3 asd"
+      <div className="container-fluid">
+        <div className="row flex-nowrap">
+          <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 nbars">
+            <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 fis">
+              <h2 className="d-none d-sm-inline mx-0 mx-md-2 my-4">Anthony</h2>
+              <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
+                <li>
+                  <Link
+                    to="/Dashboard"
+                    className="nav-link px-0 align-middle link my-2"
                   >
-                    <span>
-                      Set Questions <i className="fa fa-plus-circle"></i>
+                    <i className="fa fa-dashboard pe-2"></i>
+                    <span className="ms-1 d-none d-sm-inline">Dashboard</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="" className="nav-link px-0 align-middle link my-2">
+                    <i className="fa fa-user pe-3"></i>
+                    <span className="ms-1 d-none d-sm-inline">My Profile</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/Takequiz"
+                    className="nav-link px-0 align-middle link my-2"
+                  >
+                    <i className="fa fa-minus-circle pe-3"></i>
+                    <span className="ms-1 d-none d-sm-inline">Take Quiz</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/Admin"
+                    className="nav-link px-0 align-middle link my-2 "
+                  >
+                    <i className="fa fa-plus-circle pe-3"></i>
+                    <span className="ms-1 d-none d-sm-inline">
+                      Add Questions
                     </span>
-                  </button>
-                  <div className="modal" id="Money" data-bs-backdrop="static">
-                    <div className="modal-dialog">
-                      <div className="modal-content">
-                        <form
-                          onSubmit={formik.handleSubmit}
-                          action=""
-                          className="mx-2"
-                        >
-                          <div className="modal-header text-dark">
-                            <select
-                              value={formik.values.category}
-                              className={
-                                formik.errors.category &&
-                                formik.touched.category
-                                  ? "form-control is-invalid"
-                                  : "form-control"
-                              }
-                              onChange={formik.handleChange}
-                              name="category"
-                              onBlur={formik.handleBlur}
-                              style={{ backgroundColor: "#F5F7FA" }}
+                  </Link>
+                </li>
+                <li>
+                  <span
+                    className="nav-link px-0 align-middle link my-2"
+                    style={{ border: "none" }}
+                    onClick={logout}
+                  >
+                    <i className="fa fa-sign-out pe-3"></i>
+                    <span className="ms-1 d-none d-sm-inline">Log-Out</span>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="col py-3 text-white">
+            <div className="container my-4">
+              <div className="row">
+                <div className="col-12 col-md-6">
+                  <h5>
+                    <span>Welcome {customer.Lastname}</span>
+                  </h5>
+                </div>
+                <div className="col-12 col-md-6 text-end d-none d-md-block">
+                  <span className="text-light">
+                    <i className="fa fs-5 fa-address-card mx-4"></i>
+                  </span>
+                  <span className="text-light">
+                    <i className="fa fs-5 fa-bell-o mx-4"></i>
+                  </span>
+                  <span className="text-light">
+                    <i className="fa fs-5 fa-envelope mx-4"></i>
+                  </span>
+                  <span className="text-light">
+                    <i className="fa fs-5 fa-cog mx-4"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="container">
+              <div className="row d-flex justify-content-between">
+                <div className="col-12">
+                  <center>
+                    <h2>Set Questions</h2>
+                  </center>
+                  <div className="row">
+                    <div className="col-12 col-md-4">
+                      <button
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#Money"
+                        className="btn btn-info form-control text-light py-3 mt-3 asd"
+                      >
+                        <span>
+                          Set Questions <i className="fa fa-plus-circle"></i>
+                        </span>
+                      </button>
+                      <div
+                        className="modal"
+                        id="Money"
+                        data-bs-backdrop="static"
+                      >
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <form
+                              onSubmit={formik.handleSubmit}
+                              action=""
+                              className="mx-2"
                             >
-                              <option>CATEGORY</option>
-                              <option value="ENGLISH">ENGLISH</option>
-                              <option value="BIOLOGY">BIOLOGY</option>
-                              <option value="OTHERS">OTHERS</option>
-                            </select>
-                            {formik.touched.category && (
-                              <div style={{ color: "red" }} className="my-2">
-                                {formik.errors.category}
+                              <div className="modal-header text-dark">
+                                <select
+                                  value={formik.values.category}
+                                  className={
+                                    formik.errors.category &&
+                                    formik.touched.category
+                                      ? "form-control is-invalid"
+                                      : "form-control"
+                                  }
+                                  onChange={formik.handleChange}
+                                  name="category"
+                                  onBlur={formik.handleBlur}
+                                  style={{ backgroundColor: "#F5F7FA" }}
+                                >
+                                  <option>CATEGORY</option>
+                                  <option value="ENGLISH">ENGLISH</option>
+                                  <option value="BIOLOGY">BIOLOGY</option>
+                                  <option value="OTHERS">OTHERS</option>
+                                </select>
+                                {formik.touched.category && (
+                                  <div
+                                    style={{ color: "red" }}
+                                    className="my-2"
+                                  >
+                                    {formik.errors.category}
+                                  </div>
+                                )}
                               </div>
-                            )}
+                              <div className="modal-body">
+                                <label className="col-form-label text-dark">
+                                  Questions
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="Questions"
+                                  onChange={formik.handleChange}
+                                  value={formik.values.question}
+                                  className={
+                                    formik.errors.question &&
+                                    formik.touched.question
+                                      ? "form-control is-invalid"
+                                      : "form-control"
+                                  }
+                                  name="question"
+                                />
+                                {formik.touched.question && (
+                                  <div
+                                    style={{ color: "red" }}
+                                    className="my-2"
+                                  >
+                                    {formik.errors.question}
+                                  </div>
+                                )}
+                                <label className="col-form-label text-dark">
+                                  Options
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="Option A"
+                                  onChange={formik.handleChange}
+                                  value={formik.values.option1}
+                                  className={
+                                    formik.errors.option1 &&
+                                    formik.touched.option1
+                                      ? "form-control is-invalid"
+                                      : "form-control"
+                                  }
+                                  name="option1"
+                                />
+                                {formik.touched.option1 && (
+                                  <div
+                                    style={{ color: "red" }}
+                                    className="my-2"
+                                  >
+                                    {formik.errors.option1}
+                                  </div>
+                                )}
+                                <input
+                                  type="text"
+                                  placeholder="Option B"
+                                  onChange={formik.handleChange}
+                                  value={formik.values.option2}
+                                  className={
+                                    formik.errors.option2 &&
+                                    formik.touched.option2
+                                      ? "form-control is-invalid"
+                                      : "form-control mt-3"
+                                  }
+                                  name="option2"
+                                />
+                                {formik.touched.option2 && (
+                                  <div
+                                    style={{ color: "red" }}
+                                    className="my-2"
+                                  >
+                                    {formik.errors.option2}
+                                  </div>
+                                )}
+                                <input
+                                  type="text"
+                                  placeholder="Option C"
+                                  onChange={formik.handleChange}
+                                  value={formik.values.option3}
+                                  className={
+                                    formik.errors.option3 &&
+                                    formik.touched.option3
+                                      ? "form-control is-invalid"
+                                      : "form-control mt-3"
+                                  }
+                                  name="option3"
+                                />
+                                {formik.touched.option3 && (
+                                  <div
+                                    style={{ color: "red" }}
+                                    className="my-2"
+                                  >
+                                    {formik.errors.option3}
+                                  </div>
+                                )}
+                                <label className="col-form-label text-dark">
+                                  Correct Answer
+                                </label>
+                                <input
+                                  type="text"
+                                  placeholder="Correct Answer"
+                                  onChange={formik.handleChange}
+                                  value={formik.values.answer}
+                                  className={
+                                    formik.errors.answer &&
+                                    formik.touched.answer
+                                      ? "form-control is-invalid"
+                                      : "form-control"
+                                  }
+                                  name="answer"
+                                />
+                                {formik.touched.answer && (
+                                  <div
+                                    style={{ color: "red" }}
+                                    className="my-2"
+                                  >
+                                    {formik.errors.answer}
+                                  </div>
+                                )}
+                                <button
+                                  type="submit"
+                                  className="btn btn-info form-control py-2 mt-3"
+                                >
+                                  SAVE
+                                </button>
+                              </div>
+                            </form>
+                            <div className="modal-footer">
+                              <button
+                                type="button"
+                                className="btn btn-info"
+                                data-bs-dismiss="modal"
+                              >
+                                Close
+                              </button>
+                              <button
+                                type="reset"
+                                onClick={formik.handleReset}
+                                className="btn btn-danger"
+                              >
+                                RESET
+                              </button>
+                            </div>
                           </div>
-                          <div className="modal-body">
-                            <label className="col-form-label text-dark">
-                              Questions
-                            </label>
-                            <input
-                              type="text"
-                              placeholder="Questions"
-                              onChange={formik.handleChange}
-                              value={formik.values.question}
-                              className={
-                                formik.errors.question &&
-                                formik.touched.question
-                                  ? "form-control is-invalid"
-                                  : "form-control"
-                              }
-                              name="question"
-                            />
-                            {formik.touched.question && (
-                              <div style={{ color: "red" }} className="my-2">
-                                {formik.errors.question}
-                              </div>
-                            )}
-                            <label className="col-form-label text-dark">
-                              Options
-                            </label>
-                            <input
-                              type="text"
-                              placeholder="Option A"
-                              onChange={formik.handleChange}
-                              value={formik.values.option1}
-                              className={
-                                formik.errors.option1 && formik.touched.option1
-                                  ? "form-control is-invalid"
-                                  : "form-control"
-                              }
-                              name="option1"
-                            />
-                            {formik.touched.option1 && (
-                              <div style={{ color: "red" }} className="my-2">
-                                {formik.errors.option1}
-                              </div>
-                            )}
-                            <input
-                              type="text"
-                              placeholder="Option B"
-                              onChange={formik.handleChange}
-                              value={formik.values.option2}
-                              className={
-                                formik.errors.option2 && formik.touched.option2
-                                  ? "form-control is-invalid"
-                                  : "form-control mt-3"
-                              }
-                              name="option2"
-                            />
-                            {formik.touched.option2 && (
-                              <div style={{ color: "red" }} className="my-2">
-                                {formik.errors.option2}
-                              </div>
-                            )}
-                            <input
-                              type="text"
-                              placeholder="Option C"
-                              onChange={formik.handleChange}
-                              value={formik.values.option3}
-                              className={
-                                formik.errors.option3 && formik.touched.option3
-                                  ? "form-control is-invalid"
-                                  : "form-control mt-3"
-                              }
-                              name="option3"
-                            />
-                            {formik.touched.option3 && (
-                              <div style={{ color: "red" }} className="my-2">
-                                {formik.errors.option3}
-                              </div>
-                            )}
-                            <label className="col-form-label text-dark">
-                              Correct Answer
-                            </label>
-                            <input
-                              type="text"
-                              placeholder="Correct Answer"
-                              onChange={formik.handleChange}
-                              value={formik.values.answer}
-                              className={
-                                formik.errors.answer && formik.touched.answer
-                                  ? "form-control is-invalid"
-                                  : "form-control"
-                              }
-                              name="answer"
-                            />
-                            {formik.touched.answer && (
-                              <div style={{ color: "red" }} className="my-2">
-                                {formik.errors.answer}
-                              </div>
-                            )}
-                            <button
-                              type="submit"
-                              className="btn btn-info form-control py-2 mt-3"
-                            >
-                              SAVE
-                            </button>
-                          </div>
-                        </form>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-info"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button
-                            type="reset"
-                            onClick={formik.handleReset}
-                            className="btn btn-danger"
-                          >
-                            RESET
-                          </button>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="container">
-                    <div className="row mt-4">
-                      <div className="col-12 table-responsive asd">
-                        <center>
-                          <h2>QUESTIONS AVAILABLE</h2>
-                        </center>
-                        {admin.map((item, index) => (
-                          <div className="container">
-                            <h3>
-                              {index + 1}. {item.question} ?
-                            </h3>
-                            <p>
-                              <span>(a) {item.option1} </span>
-                              <br />
-                              <span>(b) {item.option2} </span>
-                              <br />
-                              <span>(c) {item.option3} </span>
-                            </p>
+                    <div className="col-12">
+                      <div className="container">
+                        <div className="row mt-4">
+                          <div className="col-12 table-responsive asd">
+                            <center>
+                              <h2>QUESTIONS AVAILABLE</h2>
+                            </center>
+                            {admin.map((item, index) => (
+                              <div className="container">
+                                <h3>
+                                  {index + 1}. {item.question} ?
+                                </h3>
+                                <p>
+                                  <span>(a) {item.option1} </span>
+                                  <br />
+                                  <span>(b) {item.option2} </span>
+                                  <br />
+                                  <span>(c) {item.option3} </span>
+                                </p>
+                              </div>
+                            ))}
                           </div>
-                        ))}
+                        </div>
                       </div>
                     </div>
                   </div>
