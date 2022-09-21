@@ -102,17 +102,6 @@ const Admin = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/Admin"
-                    className="nav-link px-0 align-middle link my-2 "
-                  >
-                    <i className="fa fa-plus-circle pe-3"></i>
-                    <span className="ms-1 d-none d-sm-inline">
-                      Add Questions
-                    </span>
-                  </Link>
-                </li>
-                <li>
                   <span
                     className="nav-link px-0 align-middle link my-2"
                     style={{ border: "none" }}

@@ -111,7 +111,7 @@ const Dashboard = () => {
             </div>
             <div className="container">
               <div className="row d-flex justify-content-between">
-                <div className="col-md-12 animate__animated animate__bounce animate__delay-2s text-center p-5 text-white rounded">
+                <div className="col-md-12 animate__animated animate__bounce animate__delay-2s text-center px-5 text-white rounded">
                   <center>
                     <div className="row mx-auto">
                       <div className="col-12 col-md-6 mx-auto mb-3 asd">
