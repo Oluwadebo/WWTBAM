@@ -75,7 +75,7 @@ const Admin = () => {
         <div className="row flex-nowrap">
           <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 nbars">
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 fis">
-              <h2 className="d-none d-sm-inline mx-0 mx-md-2 my-4">Anthony</h2>
+              <h2 className="d-none d-sm-inline mx-0 mx-md-2 my-4">WWTBAM</h2>
               <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
                 <li>
                   <Link
