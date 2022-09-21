@@ -6,6 +6,7 @@ import Signin from "./component/Signin";
 import Dashboard from "./component/Dashboard";
 import Takequiz from "./component/Takequiz";
 import Admin from "./component/admin";
+import Das from "./component/Das";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Signin />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Das" element={<Das />} />
         <Route path="/Takequiz" element={<Takequiz />} />
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Signin" element={<Navigate to="/" />} />

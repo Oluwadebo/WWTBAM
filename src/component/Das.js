@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import download from "./assets/download.jfif";
 
-const Dashboard = () => {
+const Das = () => {
   const [allUser, setallUser] = useState([]);
   const [currentuser, setcurrentuser] = useState("");
   const [currentuserdetails, setcurrentuserdetails] = useState({});
@@ -134,4 +134,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Das;

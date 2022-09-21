@@ -47,8 +47,10 @@ const Takequiz = () => {
       console.log("correct");
       setCorrect("true");
     } else {
-      console.log("worng");
-      setCorrect("false");
+      if (e != Answer) {
+        console.log("worng");
+        setCorrect("false");
+      }
     }
   };
   const logout = () => {
@@ -107,10 +109,10 @@ const Takequiz = () => {
               </center>
             </div>
             <div className="col-12">
-              <h3 className="my-4 mx-5">{disquestion.question} ?</h3>
+              <h3 className="my-4 mx-md-5 mx-0">{disquestion.question} ?</h3>
               <div className="row">
                 <div
-                  className="col-12 col-md-6 mx-5"
+                  className="col-12 col-md-6 mx-md-5 mx-0"
                   onClick={(e) => option(e.target.innerHTML)}
                 >
                   <h5 className="border rounded rounded-5 p-4 cort">
@@ -118,7 +120,7 @@ const Takequiz = () => {
                   </h5>
                 </div>
                 <div
-                  className="col-12 col-md-6 mx-5"
+                  className="col-12 col-md-6 mx-md-5 mx-0"
                   onClick={(e) => option(e.target.innerHTML)}
                 >
                   <h5 className="border rounded rounded-5 p-4 cort">
@@ -126,7 +128,7 @@ const Takequiz = () => {
                   </h5>
                 </div>
                 <div
-                  className="col-12 col-md-6 mx-5"
+                  className="col-12 col-md-6 mx-md-5 mx-0"
                   onClick={(e) => option(e.target.innerHTML)}
                 >
                   <h5 className="border rounded rounded-5 p-4 cort">

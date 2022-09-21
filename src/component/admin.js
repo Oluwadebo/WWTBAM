@@ -127,7 +127,9 @@ const Admin = () => {
                     data-bs-target="#Money"
                     className="btn btn-info form-control text-light py-3 mt-3 asd"
                   >
-                    Set Questions
+                    <span>
+                      Set Questions <i className="fa fa-plus-circle"></i>
+                    </span>
                   </button>
                   <div className="modal" id="Money" data-bs-backdrop="static">
                     <div className="modal-dialog">
