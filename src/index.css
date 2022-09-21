@@ -107,3 +107,9 @@ code {
     background: #071348;
   }
 }
+.naem {
+  text-transform: uppercase;
+}
+.gapsa {
+  text-transform: lowercase;
+}

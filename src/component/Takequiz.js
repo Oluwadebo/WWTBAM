@@ -39,6 +39,8 @@ const Takequiz = () => {
   const nextQuestion = () => {
     let a = Math.floor(Math.random() * question.length);
     setdisquestion(() => question[a]);
+    let correctAnswer = question[a].answer;
+    setAnswer(correctAnswer);
   };
 
   const option = (e) => {
@@ -120,7 +122,7 @@ const Takequiz = () => {
               <div className="row">
                 <div className="col-12 col-md-6">
                   <h5>
-                    <span>Welcome {customer.Lastname}</span>
+                  <span className="naem">{customer.Lastname}</span>
                   </h5>
                 </div>
                 <div className="col-12 col-md-6 text-end d-none d-md-block">

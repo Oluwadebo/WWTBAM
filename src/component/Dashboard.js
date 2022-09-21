@@ -47,7 +47,10 @@ const Dashboard = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/Profile" className="nav-link px-0 align-middle link my-2">
+                  <Link
+                    to="/Profile"
+                    className="nav-link px-0 align-middle link my-2"
+                  >
                     <i className="fa fa-user pe-3"></i>
                     <span className="ms-1 d-none d-sm-inline">My Profile</span>
                   </Link>
@@ -90,7 +93,7 @@ const Dashboard = () => {
               <div className="row">
                 <div className="col-12 col-md-6">
                   <h5>
-                    <span>Welcome {customer.Lastname}</span>
+                    <span className="naem">{customer.Lastname}</span>
                   </h5>
                 </div>
                 <div className="col-12 col-md-6 text-end d-none d-md-block">
