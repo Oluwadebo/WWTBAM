@@ -13,6 +13,8 @@ const Takequiz = () => {
   const [Answer, setAnswer] = useState("");
   const [Correct, setCorrect] = useState("");
   const navigate = useNavigate();
+  const [indexx, setindexx] = useState();
+  const [score, setscore] = useState(0);
   useEffect(() => {
     if (localStorage.wwtbam && localStorage.signinEmail && localStorage.users) {
       let AllUser = JSON.parse(localStorage.wwtbam);
@@ -41,11 +43,22 @@ const Takequiz = () => {
     setdisquestion(() => question[a]);
     let correctAnswer = question[a].answer;
     setAnswer(correctAnswer);
+    setindexx(-1);
   };
 
-  const option = (e) => {
+  const option = (e, index) => {
+    setindexx(index);
     console.log(e);
     if (e === Answer) {
+      // let email = currentuserdetails.email;
+      // let index = allUser.findIndex((x) => x.email == email);
+      // let customer = allUser[index];
+      // let remain = parseInt(allUser[index].score) + parseInt(1);
+      // setallUser((allUser[index].score = remain));
+      // localStorage.setItem("member", JSON.stringify(allUser));
+      // console.log(allUser);
+      setscore(score + 1);
+      console.log("$" + score);
       console.log("correct");
       setCorrect("true");
     } else {
@@ -58,14 +71,6 @@ const Takequiz = () => {
   const logout = () => {
     localStorage.removeItem("signinEmail");
     navigate("/Signin");
-  };
-  const toggleMenu = () => {
-    let navigation = document.querySelector(".navigation");
-    let container = document.querySelector(".container");
-    let toggle = document.querySelector(".toggle");
-    navigation.classList.toggle("active");
-    container.classList.toggle("active");
-    toggle.classList.toggle("active");
   };
   return (
     <>
@@ -122,7 +127,7 @@ const Takequiz = () => {
               <div className="row">
                 <div className="col-12 col-md-6">
                   <h5>
-                  <span className="naem">{customer.Lastname}</span>
+                    <span className="naem">{customer.Lastname}</span>
                   </h5>
                 </div>
                 <div className="col-12 col-md-6 text-end d-none d-md-block">
@@ -155,29 +160,47 @@ const Takequiz = () => {
                   <div className="row">
                     <div className="col-12">
                       <div className="row">
-                        <div
-                          className="col-12 col-md-7 mx-md-5 mx-0"
-                          onClick={(e) => option(e.target.innerHTML)}
-                        >
-                          <h5 className="border rounded rounded-5 p-4 cort">
+                        <div className="col-12 col-md-7 mx-md-5 mx-0">
+                          <div
+                            className={
+                              indexx == 0 && Correct == "true"
+                                ? "border rounded rounded-5 p-4 bg-success"
+                                : indexx == 0 && Correct == "false"
+                                  ? "border rounded rounded-5 p-4 bg-danger"
+                                  : "border rounded rounded-5 p-4"
+                            }
+                            onClick={(e) => option(e.target.innerHTML, 0)}
+                          >
                             {disquestion.option1}
-                          </h5>
+                          </div>
                         </div>
-                        <div
-                          className="col-12 col-md-7 mx-md-5 mx-0"
-                          onClick={(e) => option(e.target.innerHTML)}
-                        >
-                          <h5 className="border rounded rounded-5 p-4 cort">
+                        <div className="col-12 col-md-7 mx-md-5 mx-0 my-3">
+                          <div
+                            className={
+                              indexx == 1 && Correct == "true"
+                                ? "border rounded rounded-5 p-4 bg-success"
+                                : indexx == 1 && Correct == "false"
+                                  ? "border rounded rounded-5 p-4 bg-danger"
+                                  : "border rounded rounded-5 p-4"
+                            }
+                            onClick={(e) => option(e.target.innerHTML, 1)}
+                          >
                             {disquestion.option2}
-                          </h5>
+                          </div>
                         </div>
-                        <div
-                          className="col-12 col-md-7 mx-md-5 mx-0"
-                          onClick={(e) => option(e.target.innerHTML)}
-                        >
-                          <h5 className="border rounded rounded-5 p-4 cort">
+                        <div className="col-12 col-md-7 mx-md-5 mx-0">
+                          <div
+                            className={
+                              indexx == 2 && Correct == "true"
+                                ? "border rounded rounded-5 p-4 bg-success"
+                                : indexx == 2 && Correct == "false"
+                                  ? "border rounded rounded-5 p-4 bg-danger"
+                                  : "border rounded rounded-5 p-4"
+                            }
+                            onClick={(e) => option(e.target.innerHTML, 2)}
+                          >
                             {disquestion.option3}
-                          </h5>
+                          </div>
                         </div>
                       </div>
                     </div>
