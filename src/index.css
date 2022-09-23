@@ -6,7 +6,6 @@
   transition: 0.5s;
 }
 body {
-  min-height: 100vh;
   background: #020019;
   overflow-x: hidden;
   transition: 0.5s;
@@ -77,6 +76,7 @@ code {
 }
 .nbars {
   background: #071348;
+  width: 235px;
   transition: 0.5s;
   overflow: hidden;
 }

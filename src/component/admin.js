@@ -55,7 +55,7 @@ const Admin = () => {
       setadmin(newobj);
       localStorage.setItem("admin", JSON.stringify(newobj));
     },
-    onReset: (values) => {},
+    onReset: (values) => { },
     validationSchema: yup.object({
       category: yup.string().required("This field is required"),
       question: yup.string().required("This field is required"),
@@ -75,7 +75,12 @@ const Admin = () => {
         <div className="row flex-nowrap">
           <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 nbars">
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 fis">
-              <h2 className="d-none d-sm-inline mx-0 mx-md-2 my-4">WWTBAM</h2>
+              <h2 className="d-none d-sm-inline mx-0 mx-md-2 my-4">
+                <span className="d-flex">
+                  <i className="fa fa-graduation-cap pe-2"></i>
+                  <span>WWTBAM</span>
+                </span>
+              </h2>
               <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
                 <li>
                   <Link
@@ -122,7 +127,9 @@ const Admin = () => {
               <div className="row">
                 <div className="col-12 col-md-6">
                   <h5>
-                    <span className="naem">{customer.Lastname}</span>
+                    <span>
+                      Welcome <span className="naem">{customer.Lastname}</span>
+                    </span>
                   </h5>
                 </div>
                 <div className="col-12 col-md-6 text-end d-none d-md-block">
@@ -176,7 +183,7 @@ const Admin = () => {
                                   value={formik.values.category}
                                   className={
                                     formik.errors.category &&
-                                    formik.touched.category
+                                      formik.touched.category
                                       ? "form-control is-invalid"
                                       : "form-control"
                                   }
@@ -210,7 +217,7 @@ const Admin = () => {
                                   value={formik.values.question}
                                   className={
                                     formik.errors.question &&
-                                    formik.touched.question
+                                      formik.touched.question
                                       ? "form-control is-invalid"
                                       : "form-control"
                                   }
@@ -234,7 +241,7 @@ const Admin = () => {
                                   value={formik.values.option1}
                                   className={
                                     formik.errors.option1 &&
-                                    formik.touched.option1
+                                      formik.touched.option1
                                       ? "form-control is-invalid"
                                       : "form-control"
                                   }
@@ -255,7 +262,7 @@ const Admin = () => {
                                   value={formik.values.option2}
                                   className={
                                     formik.errors.option2 &&
-                                    formik.touched.option2
+                                      formik.touched.option2
                                       ? "form-control is-invalid"
                                       : "form-control mt-3"
                                   }
@@ -276,7 +283,7 @@ const Admin = () => {
                                   value={formik.values.option3}
                                   className={
                                     formik.errors.option3 &&
-                                    formik.touched.option3
+                                      formik.touched.option3
                                       ? "form-control is-invalid"
                                       : "form-control mt-3"
                                   }
@@ -300,7 +307,7 @@ const Admin = () => {
                                   value={formik.values.answer}
                                   className={
                                     formik.errors.answer &&
-                                    formik.touched.answer
+                                      formik.touched.answer
                                       ? "form-control is-invalid"
                                       : "form-control"
                                   }

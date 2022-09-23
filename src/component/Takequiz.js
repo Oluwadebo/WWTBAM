@@ -14,7 +14,6 @@ const Takequiz = () => {
   const [Correct, setCorrect] = useState("");
   const navigate = useNavigate();
   const [indexx, setindexx] = useState();
-  const [score, setscore] = useState(0);
   useEffect(() => {
     if (localStorage.wwtbam && localStorage.signinEmail && localStorage.users) {
       let AllUser = JSON.parse(localStorage.wwtbam);
@@ -50,20 +49,23 @@ const Takequiz = () => {
     setindexx(index);
     console.log(e);
     if (e === Answer) {
-      // let email = currentuserdetails.email;
-      // let index = allUser.findIndex((x) => x.email == email);
-      // let customer = allUser[index];
-      // let remain = parseInt(allUser[index].score) + parseInt(1);
-      // setallUser((allUser[index].score = remain));
-      // localStorage.setItem("member", JSON.stringify(allUser));
-      // console.log(allUser);
-      setscore(score + 1);
-      console.log("$" + score);
-      console.log("correct");
+      let email = currentuserdetails.email;
+      let index = allUser.findIndex((x) => x.email == email);
+      let { Lastname, account, firstname, gender, password, score } = allUser[index]
+      score += 1;
+      setallUser([{
+        Lastname,
+        account,
+        firstname,
+        gender,
+        password,
+        score,
+        email
+      }])
+      localStorage.setItem("wwtbam", JSON.stringify(allUser));
       setCorrect("true");
     } else {
       if (e != Answer) {
-        console.log("worng");
         setCorrect("false");
       }
     }
@@ -78,7 +80,12 @@ const Takequiz = () => {
         <div className="row flex-nowrap">
           <div className="col-auto col-md-3 col-xl-2 px-sm-2 px-0 nbars">
             <div className="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-              <h2 className="d-none d-sm-inline mx-0 mx-md-2 my-4">WWTBAM</h2>
+              <h2 className="d-none d-sm-inline mx-0 mx-md-2 my-4">
+                <span className="d-flex">
+                  <i className="fa fa-graduation-cap pe-2"></i>
+                  <span>WWTBAM</span>
+                </span>
+              </h2>
               <ul className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start">
                 <li>
                   <Link
@@ -127,7 +134,9 @@ const Takequiz = () => {
               <div className="row">
                 <div className="col-12 col-md-6">
                   <h5>
-                    <span className="naem">{customer.Lastname}</span>
+                    <span>
+                      Welcome <span className="naem">{customer.Lastname}</span>
+                    </span>
                   </h5>
                 </div>
                 <div className="col-12 col-md-6 text-end d-none d-md-block">
@@ -166,8 +175,8 @@ const Takequiz = () => {
                               indexx == 0 && Correct == "true"
                                 ? "border rounded rounded-5 p-4 bg-success"
                                 : indexx == 0 && Correct == "false"
-                                  ? "border rounded rounded-5 p-4 bg-danger"
-                                  : "border rounded rounded-5 p-4"
+                                  ? "border rounded rounded-5 p-4 bg-success"
+                                  : "border rounded rounded-5 p-4 cort"
                             }
                             onClick={(e) => option(e.target.innerHTML, 0)}
                           >
@@ -180,8 +189,8 @@ const Takequiz = () => {
                               indexx == 1 && Correct == "true"
                                 ? "border rounded rounded-5 p-4 bg-success"
                                 : indexx == 1 && Correct == "false"
-                                  ? "border rounded rounded-5 p-4 bg-danger"
-                                  : "border rounded rounded-5 p-4"
+                                  ? "border rounded rounded-5 p-4 bg-success"
+                                  : "border rounded rounded-5 p-4 cort"
                             }
                             onClick={(e) => option(e.target.innerHTML, 1)}
                           >
@@ -194,8 +203,8 @@ const Takequiz = () => {
                               indexx == 2 && Correct == "true"
                                 ? "border rounded rounded-5 p-4 bg-success"
                                 : indexx == 2 && Correct == "false"
-                                  ? "border rounded rounded-5 p-4 bg-danger"
-                                  : "border rounded rounded-5 p-4"
+                                  ? "border rounded rounded-5 p-4 bg-success"
+                                  : "border rounded rounded-5 p-4 cort"
                             }
                             onClick={(e) => option(e.target.innerHTML, 2)}
                           >
