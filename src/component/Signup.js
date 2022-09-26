@@ -34,7 +34,7 @@ const Signup = () => {
       let debo = JSON.parse(localStorage.getItem("wwtbam"));
       setallUser(debo);
       if (values) {
-        if (allUser <= 0) {
+        if (allUser == "") {
           setallUser(allUser.push(values));
           localStorage.setItem("wwtbam", JSON.stringify(allUser));
           navigate("/Signin");

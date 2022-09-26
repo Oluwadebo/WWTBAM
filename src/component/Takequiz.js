@@ -44,15 +44,17 @@ const Takequiz = () => {
     setAnswer(correctAnswer);
     setindexx(-1);
   };
-
+  let incre = 18
   const option = (e, index) => {
     setindexx(index);
-    console.log(e);
     if (e === Answer) {
       let email = currentuserdetails.email;
       let index = allUser.findIndex((x) => x.email == email);
-      let { Lastname, account, firstname, gender, password, score } = allUser[index]
-      score += 1;
+      let { Lastname, account, firstname, gender, password, score } = allUser[index];
+      account = Number(account)
+      account += 0.1;
+      score = Number(score)
+      score += 1
       setallUser([{
         Lastname,
         account,
@@ -215,8 +217,8 @@ const Takequiz = () => {
                     </div>
                     <div className="col-12 mx-md-5 mx-0">
                       <div className="row">
-                        <div className="col-11" style={{ float: "right" }}>
-                          <h3 className="circle" onClick={nextQuestion}>
+                        <div className="col-11" style={{ float: "right" }} onClick={nextQuestion}>
+                          <h3 className="circle" >
                             Next
                           </h3>
                         </div>
