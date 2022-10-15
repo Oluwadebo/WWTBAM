@@ -19,6 +19,50 @@ code {
   border-radius: 10px;
   border: none;
 }
+.modals {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  transition: 0.5s;
+}
+.modals:hover {
+  letter-spacing: 4px;
+}
+.popup {
+  width: 450px;
+  background: #1b3fe0;
+  padding: 80px 50px 50px;
+  position: fixed;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  transition: 0.5s;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+  visibility: hidden;
+}
+.popup.active{
+  visibility: visible ;
+}
+.popup .content {
+  position: relative;
+  width: 100%;
+}
+.popup .content h2{
+  font-size: 24px;
+  font-weight: 500;
+  margin: 20px 0 10px;
+}
+.close{
+  position: absolute;
+  top: -80px;
+  right: -30px;
+  cursor: pointer;
+}
 .sig {
   color: #1dcf9f;
   opacity: 0.8;
@@ -70,6 +114,17 @@ code {
 .circle:hover {
   background: #1b3fe0;
   transform: rotate(360deg);
+}
+.circ {
+  /* width: 100px; */
+  padding: 10px;
+  line-height: 0;
+  margin: 40px auto;
+  background: #071348;
+  border-radius: 60px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 2s, transform 1.5s linear;
 }
 .link {
   color: white !important;

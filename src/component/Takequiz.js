@@ -1,4 +1,7 @@
+import { clear } from "@testing-library/user-event/dist/clear";
+import { getActiveElement } from "@testing-library/user-event/dist/utils";
 import React from "react";
+import { useRef } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -14,6 +17,35 @@ const Takequiz = () => {
   const [Correct, setCorrect] = useState("");
   const navigate = useNavigate();
   const [indexx, setindexx] = useState();
+  const id = useRef(null)
+  const [Timer, setTimer] = useState(10);
+  useEffect(() => {
+    id.current = window.setInterval(() => {
+      setTimer((time) => time - 1)
+    }, 1000)
+    return () => clear();
+  }, [])
+  useEffect(() => {
+    if (Timer === 0) {
+      clear()
+      //  alert("the lord is good")
+    }
+  }, [Timer])
+  const clear = () => {
+    window.clearInterval(id.current)
+  }
+  const popupToggle = () => {
+    const popup = document.getElementById('popup');
+    popup.classList.toggle('active')
+  }
+  const mod = () => {
+    <button
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#Money"
+      className="btn btn-info form-control text-light py-3 mt-3 asd"
+    ></button>
+  }
   useEffect(() => {
     if (localStorage.wwtbam && localStorage.signinEmail && localStorage.users) {
       let AllUser = JSON.parse(localStorage.wwtbam);
@@ -44,7 +76,10 @@ const Takequiz = () => {
     setAnswer(correctAnswer);
     setindexx(-1);
   };
+
+
   let incre = 18
+
   const option = (e, index) => {
     setindexx(index);
     if (e === Answer) {
@@ -52,7 +87,8 @@ const Takequiz = () => {
       let index = allUser.findIndex((x) => x.email == email);
       let { Lastname, account, firstname, gender, password, score } = allUser[index];
       account = Number(account)
-      account += 0.1;
+      account += 1;
+      console.log(account);
       score = Number(score)
       score += 1
       setallUser([{
@@ -160,11 +196,44 @@ const Takequiz = () => {
             <div className="container">
               <div className="row d-flex justify-content-between">
                 <div className="col-12">
+                  <div
+                    className="modal"
+                    id="Money"
+                    data-bs-backdrop="static"
+                  >
+                    <div className="modal-dialog text-dark">
+                      <div className="modal-content">
+                        <div className="modal-header"></div>
+                        <div className="modal-body">
+                          <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Totam quos perspiciatis accusantium veniam dignissimos, nostrum, natus architecto quaerat vero quibusdam delectus tenetur quis alias tempora nulla eaque laboriosam at? Ad.</h2>
+                        </div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-info"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <center>
                     <h2>Quiz Questions</h2>
+                    <div><h4><span className="circ">Time left: {Timer} s</span></h4></div>
+                    <a className="modals" onClick={() => popupToggle()}>finsh</a>
+                    <div className="popup" id="popup">
+                      <div className="content">
+                        <h2>Lorem ipsum dolor sit amet</h2>
+                        <span className="text-light close" onClick={() => popupToggle()}>
+                          <i className="fa fs-5 fa-close mx-4"></i>
+                        </span>
+                      </div>
+                    </div>
                   </center>
                 </div>
-                <h3 className="my-4 col-12 mx-md-5 mx-0">
+                <h3 className="my-4 col-12 mx-md-5 mx-0 ">
                   {disquestion.question} ?
                 </h3>
                 <div className=" col-12 col-md-12 animate__animated animate__bounce animate__delay-2s text-center px-5 text-white rounded">

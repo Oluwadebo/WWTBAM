@@ -153,6 +153,7 @@ const Admin = () => {
                 <div className="col-12">
                   <center>
                     <h2>Set Questions</h2>
+                    <p>Click the button below to set your own question</p>
                   </center>
                   <div className="row">
                     <div className="col-12 col-md-4">
@@ -163,7 +164,7 @@ const Admin = () => {
                         className="btn btn-info form-control text-light py-3 mt-3 asd"
                       >
                         <span>
-                          Set Questions <i className="fa fa-plus-circle"></i>
+                          <i className="fa fa-plus-circle" style={{ fontSize: "20px" }}></i> Set Questions
                         </span>
                       </button>
                       <div
